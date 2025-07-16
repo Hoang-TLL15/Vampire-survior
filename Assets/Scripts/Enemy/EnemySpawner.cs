@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -79,12 +80,18 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            PlayerStats playerStats = FindObjectOfType<PlayerStats>();
-            PlayerInventory inventory = playerStats.GetComponent<PlayerInventory>();
-            GameManager.instance.AssignLevelReachedUI(playerStats.level);
-            GameManager.instance.AssignChosenWeaponsAndPassiveItemsUI(inventory.weaponSlots, inventory.passiveSlots);
-            Debug.Log("You have completed all the waves!");
-            GameManager.instance.GameOver();
+            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+            GameObject canvasGameObject = GameObject.Find("Canvas");
+            GameObject gameManagerObject = GameObject.Find("Game Manager");
+            DontDestroyOnLoad(gameManagerObject);
+
+            DontDestroyOnLoad(canvasGameObject);
+
+            // Make Player GameObject persistent across scenes
+            DontDestroyOnLoad(playerObject);
+
+            // Load the GameBoss scene
+            SceneManager.LoadScene("GameBoss");
         }
     }
 

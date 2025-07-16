@@ -14,4 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/GameBoss.unity
+    guid: 4994f72c2a663af4597cf7fe189ccd6b
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

@@ -1,4 +1,4 @@
-
+﻿
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -122,7 +122,11 @@ public class PlayerStats : MonoBehaviour
         {
             isInvincible = false;
         }
-
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            isImmortal = !isImmortal;
+            Debug.Log("Immortal mode: " + isImmortal);
+        }
         Recover();
     }
 
@@ -187,31 +191,24 @@ public class PlayerStats : MonoBehaviour
         // Update level text
         levelText.text = "LV " + level.ToString();
     }
+    public bool isImmortal = false;
 
     public void TakeDamage(float dmg)
     {
-        //If the player is not currently invincible, reduce health and start invincibility
+        if (isImmortal) return; // bỏ qua nếu đang bất tử
+
         if (!isInvincible)
         {
-            // Take armor into account before dealing the damage.
             dmg -= actualStats.armor;
 
             if (dmg > 0)
             {
-                // Deal the damage.
                 CurrentHealth -= dmg;
-
-                // If there is a damage effect assigned, play it.
                 if (damageEffect) Destroy(Instantiate(damageEffect, transform.position, Quaternion.identity), 5f);
-
-                if (CurrentHealth <= 0)
-                {
-                    Kill();
-                }
+                if (CurrentHealth <= 0) Kill();
             }
             else
             {
-                // If there is a blocked effect assigned, play it.
                 if (blockedEffect) Destroy(Instantiate(blockedEffect, transform.position, Quaternion.identity), 5f);
             }
 
@@ -219,6 +216,7 @@ public class PlayerStats : MonoBehaviour
             isInvincible = true;
         }
     }
+
 
     void UpdateHealthBar()
     {

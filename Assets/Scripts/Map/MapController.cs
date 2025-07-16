@@ -21,6 +21,8 @@ public class MapController : MonoBehaviour
 
     void Start()
     {
+        // Find the Player GameObject by tag and assign it
+        player = GameObject.FindGameObjectWithTag("Player");
         playerLastPosition = player.transform.position;
     }
 

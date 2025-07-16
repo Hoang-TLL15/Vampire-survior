@@ -105,6 +105,7 @@ public class EnemyStats : MonoBehaviour
         }
 
         Destroy(gameObject);
+        Debug.Log("Enemy killed: " + gameObject.name);
     }
 
 

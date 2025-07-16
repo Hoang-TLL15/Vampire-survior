@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
 
     // Define the different states of the game
     public enum GameState
@@ -62,6 +62,10 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            // Subscribe to sceneLoaded event
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
@@ -70,6 +74,31 @@ public class GameManager : MonoBehaviour
         }
 
         DisableScreens();
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Example: Destroy GameManager in "MainMenu" scene
+        if (scene.name == "Menu"|| scene.name == "Title Screen")
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            GameObject player1 = GameObject.FindGameObjectWithTag("Player");
+            GameObject canvas1 = GameObject.Find("Canvas");
+            GameObject game1 = GameObject.Find("Game Manager");
+            Destroy(player1);
+            Destroy(canvas1);
+            Destroy(game1);
+        }
+    }
+
+    void Start()
+    {
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            // Set the desired position for the Player in the GameBoss scene
+            playerObject.transform.position = new Vector3(0, 0, 0); // Change to your desired spawn position
+        }
     }
 
     void Update()
@@ -234,7 +263,7 @@ public class GameManager : MonoBehaviour
     {
         resultsScreen.SetActive(true);
     }
-    
+
     public void ShowResultScene()
     {
         resultsScreen.SetActive(true);
