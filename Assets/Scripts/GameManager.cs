@@ -86,7 +86,6 @@ public class GameManager : MonoBehaviour
             GameObject canvas1 = GameObject.Find("Canvas");
             GameObject game1 = GameObject.Find("Game Manager");
             Destroy(player1);
-            Destroy(canvas1);
             Destroy(game1);
         }
     }
