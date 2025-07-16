@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
         Gameplay,
         Paused,
         GameOver,
-        LevelUp
+        LevelUp,
     }
 
     // Store the current state of the game
@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public GameObject pauseScreen;
     public GameObject resultsScreen;
     public GameObject levelUpScreen;
+    public GameObject resultsScreenWin;
 
     [Header("Results Screen Displays")]
     public TMP_Text chosenCharacterName;
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
             GameObject game1 = GameObject.Find("Game Manager");
             Destroy(player1);
             Destroy(game1);
+            Destroy(canvas1);
         }
     }
 
@@ -249,6 +251,7 @@ public class GameManager : MonoBehaviour
     {
         pauseScreen.SetActive(false);
         resultsScreen.SetActive(false);
+        resultsScreenWin.SetActive(false);
         levelUpScreen.SetActive(false);
     }
 

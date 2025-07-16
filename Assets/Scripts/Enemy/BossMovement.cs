@@ -61,7 +61,8 @@ public class BossMovement : MonoBehaviour
             GameManager.instance.AssignLevelReachedUI(playerStats.level);
             GameManager.instance.AssignChosenWeaponsAndPassiveItemsUI(inventory.weaponSlots, inventory.passiveSlots);
             Debug.Log("You have completed all the waves!");
-            GameManager.instance.GameOver(); // Notify the game manager that the boss is killed
+            GameManager.instance.GameOver();
+            GameManager.instance.resultsScreenWin.SetActive(true);// Notify the game manager that the boss is killed
         }
 
         // If we are currently being knocked back, then process the knockback.

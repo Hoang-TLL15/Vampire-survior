@@ -622,6 +622,10 @@ PrefabInstance:
       propertyPath: 'propPrefabs.Array.data[8]'
       value: 
       objectReference: {fileID: 764711501293199007, guid: 77b6396c0bd06db468d6b3233c81717d, type: 3}
+    - target: {fileID: 5054667523582102966, guid: cc9d8c6b9a7d13448917578ca6e0263d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7511428502265991771, guid: cc9d8c6b9a7d13448917578ca6e0263d, type: 3}
       propertyPath: m_Size.x
       value: 12.164543
