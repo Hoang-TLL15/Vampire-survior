@@ -40,7 +40,8 @@ public class EnemySpawner : MonoBehaviour
 
     Transform player;
 
-    
+    public GameObject summon;
+
     void Start()
     {
         player = FindObjectOfType<PlayerStats>().transform;
@@ -49,6 +50,20 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            // Skip to the last wave
+            currentWaveCount = waves.Count - 1;
+            CalculateWaveQuota();
+
+            // Optionally reset spawn counts for the last wave
+            waves[currentWaveCount].spawnCount = 0;
+            foreach (var group in waves[currentWaveCount].enemyGroups)
+            {
+                group.spawnCount = 0;
+            }
+        }
+
         if (currentWaveCount < waves.Count && waves[currentWaveCount].spawnCount == 0 && !isWaveActive)  //Check if the wave has ended and the next wave should start
         {
             StartCoroutine(BeginNextWave());
@@ -80,6 +95,14 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
+            // Activate the summon GameObject after 1 second
+            
+            if (summon != null)
+            {
+                summon.SetActive(true);
+            }
+            yield return new WaitForSeconds(1f);
+            summon.SetActive(false);
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
             GameObject canvasGameObject = GameObject.Find("Canvas");
             GameObject gameManagerObject = GameObject.Find("Game Manager");

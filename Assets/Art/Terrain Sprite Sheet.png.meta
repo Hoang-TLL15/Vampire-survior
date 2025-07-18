@@ -710,6 +710,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Terrain Sprite Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 586
+        width: 84
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aa48ea5e45be2e48a289065c8494b8a
+      internalID: -1421853881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -740,6 +762,7 @@ TextureImporter:
       Terrain Sprite Sheet_20: 791781821
       Terrain Sprite Sheet_21: 978520645
       Terrain Sprite Sheet_22: 1296733592
+      Terrain Sprite Sheet_23: -1421853881
       Terrain Sprite Sheet_3: -5642436073318564612
       Terrain Sprite Sheet_4: 3344529577572007489
       Terrain Sprite Sheet_5: -919653131898075759
